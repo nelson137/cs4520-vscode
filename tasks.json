@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": false
+    },
+    "tasks": [
+        {
+            "label": "cmake configure",
+            "group": "build",
+            "type": "shell",
+            "command": "export BUILD=\"$(<.vscode/module)/build\" && mkdir -p \"$BUILD\" && cd \"$BUILD\" && cmake ..",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "make",
+            "group": "build",
+            "type": "shell",
+            "dependsOn": "cmake configure",
+            "command": "export BUILD=\"$(<.vscode/module)/build\" && rm -rf build && cd \"$BUILD\" && make && find . -maxdepth 1 -type f -executable -exec mv {} a.out \\; && cd .. && cp -r build ..",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "clean",
+            "group": "build",
+            "type": "shell",
+            "command": "find . -maxdepth 2 -type d -name build -exec rm -rf {} +",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": "$gcc"
+        }
+    ]
+}
