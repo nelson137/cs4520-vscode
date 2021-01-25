@@ -8,8 +8,8 @@
             "MIMode": "gdb",
             "miDebuggerPath": "/usr/bin/gdb",
             "preLaunchTask": "make",
-            "cwd": "${workspaceFolder}",
-            "program": "${workspaceRoot}/build/a.out",
+            "cwd": "${workspaceFolder}/build",
+            "program": "${workspaceFolder}/build/a.out",
             "args": [],
             "externalConsole": false,
             "setupCommands": [
