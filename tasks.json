@@ -24,7 +24,7 @@
             "group": "build",
             "type": "shell",
             "dependsOn": "cmake configure",
-            "command": "export BUILD=\"$(<.vscode/module)/build\" && rm -rf build && cd \"$BUILD\" && make && find . -maxdepth 1 -type f -executable -exec mv {} a.out \\; && cd .. && cp -r build ..",
+            "command": "export BUILD=\"$(<.vscode/module)/build\" && rm -rf build && cd \"$BUILD\" && make -j8 && find . -maxdepth 1 -type f -executable -exec mv {} a.out \\; && cd .. && cp -r build ..",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
